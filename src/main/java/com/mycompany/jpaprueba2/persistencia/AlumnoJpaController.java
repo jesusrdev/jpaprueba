@@ -40,6 +40,7 @@ public class AlumnoJpaController implements Serializable {
         }
     }
 
+    /*
     public void edit(Alumno alumno) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -63,6 +64,7 @@ public class AlumnoJpaController implements Serializable {
             }
         }
     }
+    */
 
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
