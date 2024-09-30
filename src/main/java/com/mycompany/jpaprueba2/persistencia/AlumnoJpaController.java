@@ -6,8 +6,11 @@ import javax.persistence.Persistence;
 
 import com.mycompany.jpaprueba2.logica.Alumno;
 import com.mycompany.jpaprueba2.persistencia.exceptions.NonexistentEntityException;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 
 public class AlumnoJpaController implements Serializable {
 
@@ -84,6 +87,30 @@ public class AlumnoJpaController implements Serializable {
             if (em != null) {
                 em.close();
             }
+        }
+    }
+    
+    public List<Alumno> findAlumnoEntities() {
+        return findAlumnoEntities(true, -1, -1);
+    }
+
+    public List<Alumno> findAlumnoEntities(int maxResults, int firstResult) {
+        return findAlumnoEntities(false, maxResults, firstResult);
+    }
+
+    private List<Alumno> findAlumnoEntities(boolean all, int maxResults, int firstResult) {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(Alumno.class));
+            Query q = em.createQuery(cq);
+            if (!all) {
+                q.setMaxResults(maxResults);
+                q.setFirstResult(firstResult);
+            }
+            return q.getResultList();
+        } finally {
+            em.close();
         }
     }
     
