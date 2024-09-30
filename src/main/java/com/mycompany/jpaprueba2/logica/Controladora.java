@@ -12,4 +12,11 @@ public class Controladora {
         controlPersis.crearAlumno(alu);
     }
     
+    public void eliminarAlumno(int id) {
+        controlPersis.eliminarAlumno(id);
+    }
+    
+    public void editarAlumno(Alumno alumno) {
+        controlPersis.editarAlumno(alumno);
+    }    
 }
