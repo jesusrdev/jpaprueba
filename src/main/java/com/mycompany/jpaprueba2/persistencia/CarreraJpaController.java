@@ -53,7 +53,7 @@ public class CarreraJpaController {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 int id = carrera.getId();
-                if (findAlumno(id) == null) {
+                if (findCarrera(id) == null) {
                     throw new NonexistentEntityException("The alumno with id " + id + " no longer exist.");
                 }
             }

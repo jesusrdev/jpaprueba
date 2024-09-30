@@ -1,6 +1,7 @@
 package com.mycompany.jpaprueba2;
 
 import com.mycompany.jpaprueba2.logica.Alumno;
+import com.mycompany.jpaprueba2.logica.Carrera;
 import com.mycompany.jpaprueba2.logica.Controladora;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,25 +12,27 @@ public class JpaPrueba2 {
 
     public static void main(String[] args) {
         Controladora control = new Controladora();
-        Alumno alu2 = new Alumno(20, "Ibra", "The Yorkie", new Date());
-        control.crearAlumno(alu2);
         
-//        control.eliminarAlumno(30);
+        
+        Carrera carre = new Carrera(1, "Tecnicatura en programación");
+        control.crearCarrera(carre);
+        
+        
+        Alumno alu = new Alumno(24, "Ibu", "The York", new Date(), carre);
+        control.crearAlumno(alu);
+        
+        
+        System.out.println("----------------------------");
+        System.out.println("---------------DATOS ALUMNO------------------");
+        
+        Alumno alu2 = control.traerAlumno(24);
+        System.out.println("Alumno: " + alu2.getApellido());
+        System.out.println("Alumno: " + alu2.getNombre());
 
-//        alu.setApellido("de Paula");
-//        control.editarAlumno(alu);
-
-        Alumno alu = control.traerAlumno(15);
-        System.out.println("---------------------------BUSQUEDA INDIVIDUAL----------------------------");
-        System.out.println("El alumno es: " + alu.toString());
+        System.out.println("Cursa la carrera de: " + alu2.getCarrera().getNombre());
         
-        System.out.println("----------------------------BUSQUEDA DE TODOS----------------------------");
-        ArrayList<Alumno> listaAlumnos = control.traerListaAlumnos();
         
-        for (Alumno alumno : listaAlumnos) {
-            System.out.println("El alumno es: " + alumno.toString());
-        }
         
-        System.out.println("-----------------------------------------------------------------------");
+        
     }
 }

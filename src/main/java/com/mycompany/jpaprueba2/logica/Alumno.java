@@ -24,7 +24,7 @@ public class Alumno implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaNac;
     
-    @OneToOne()
+    @OneToOne
     private Carrera carrera;
 
     public Alumno(int id, String nombre, String apellido, Date fechaNac, Carrera carrera) {

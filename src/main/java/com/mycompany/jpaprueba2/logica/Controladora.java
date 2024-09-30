@@ -43,7 +43,7 @@ public class Controladora {
         controlPersis.editarCarrera(carrera);
     }    
     
-    public Alumno traerCarrera(int id) {
+    public Carrera traerCarrera(int id) {
         return controlPersis.traerCarrera(id);
     }
     
