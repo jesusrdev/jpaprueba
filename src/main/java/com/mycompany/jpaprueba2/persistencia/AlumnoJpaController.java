@@ -52,7 +52,7 @@ public class AlumnoJpaController implements Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 int id = alumno.getId();
-                if (findAlumno.getId(id) == null) {
+                if (findAlumno(id) == null) {
                     throw new NonexistentEntityException("The alumno with id " + id + " no longer exist.");
                 }
             }
@@ -87,6 +87,13 @@ public class AlumnoJpaController implements Serializable {
         }
     }
     
-    
+    public Alumno findAlumno(int id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(Alumno.class, id);
+        } finally {
+            em.close();
+        }
+    }
 
 }
