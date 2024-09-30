@@ -2,6 +2,7 @@
 package com.mycompany.jpaprueba2.logica;
 
 import com.mycompany.jpaprueba2.persistencia.ControladoraPersistencia;
+import java.util.ArrayList;
 
 
 public class Controladora {
@@ -19,4 +20,12 @@ public class Controladora {
     public void editarAlumno(Alumno alumno) {
         controlPersis.editarAlumno(alumno);
     }    
+    
+    public Alumno traerAlumno(int id) {
+        return controlPersis.traerAlumno(id);
+    }
+    
+    public ArrayList<Alumno> traerListaAlumnos() {
+        return controlPersis.traerListaAlumnos();
+    }
 }

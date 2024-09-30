@@ -2,6 +2,8 @@ package com.mycompany.jpaprueba2.persistencia;
 
 import com.mycompany.jpaprueba2.logica.Alumno;
 import com.mycompany.jpaprueba2.persistencia.exceptions.NonexistentEntityException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,6 +29,18 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Alumno traerAlumno(int id) {
+        return aluJpa.findAlumno(id);
+    }
+
+    public ArrayList<Alumno> traerListaAlumnos() {
+        List<Alumno> listita = aluJpa.findAlumnoEntities();
+        
+        ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>(listita);
+        
+        return listaAlumnos;
     }
     
     
